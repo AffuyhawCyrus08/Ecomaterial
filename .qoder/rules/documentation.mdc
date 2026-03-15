@@ -1,0 +1,53 @@
+---
+description: Documentation maintenance and updates
+globs: ["**/*.md", "**/docs/**", "**/README*"]
+alwaysApply: false
+---
+
+# Documentation Guidelines
+
+When updating or creating documentation:
+
+## Documentation Maintenance
+- Keep all documentation files up to date with implementation changes
+- Update status.md regularly to reflect current progress
+- Document any architectural decisions or deviations from the original plan
+- Include code examples and usage instructions where helpful
+
+## API Documentation
+- Document all API endpoints with request/response examples
+- Include authentication requirements and error codes
+- Provide integration examples for common use cases
+- Keep API versioning information current
+
+## User Documentation
+- Write clear setup and installation instructions
+- Provide troubleshooting guides for common issues
+- Include configuration options and environment setup
+- Create user guides for key features
+
+@requirements.md
+@prd.md
+@status.md
+
+## Required Context Files
+@architecture-decisions.md
+@requirements.md
+@prd.md
+@techstack.md
+@backend.md
+@frontend.md
+@flow.md
+@api-docs.md
+@database.md
+@security.md
+@status.md
+
+## Source Of Truth Priority
+1. architecture-decisions.md
+2. requirements.md and prd.md
+3. techstack.md, backend.md, frontend.md
+4. api-docs.md, database.md, security.md, flow.md
+5. status.md
+
+If conflicts are detected, follow this order and align implementation to the highest-priority file.

@@ -1,0 +1,52 @@
+---
+description: Testing guidelines and quality assurance practices
+globs: ["**/*.test.*", "**/*.spec.*", "**/tests/**", "**/test/**"]
+alwaysApply: false
+---
+
+# Testing & Quality Assurance
+
+When writing tests and ensuring code quality:
+
+## Testing Strategy
+- Follow the testing criteria outlined in status.md
+- Write unit tests for business logic and utilities
+- Implement integration tests for API endpoints
+- Add end-to-end tests for critical user workflows
+
+## Test Organization
+- Organize tests in a logical directory structure
+- Use descriptive test names that explain the scenario
+- Mock external dependencies and services
+- Maintain test data and fixtures properly
+
+## Quality Gates
+- Ensure all tests pass before merging code
+- Maintain adequate code coverage (aim for 80%+)
+- Run linting and code formatting tools
+- Test edge cases and error scenarios
+
+@status.md
+@flow.md
+
+## Required Context Files
+@architecture-decisions.md
+@requirements.md
+@prd.md
+@techstack.md
+@backend.md
+@frontend.md
+@flow.md
+@api-docs.md
+@database.md
+@security.md
+@status.md
+
+## Source Of Truth Priority
+1. architecture-decisions.md
+2. requirements.md and prd.md
+3. techstack.md, backend.md, frontend.md
+4. api-docs.md, database.md, security.md, flow.md
+5. status.md
+
+If conflicts are detected, follow this order and align implementation to the highest-priority file.

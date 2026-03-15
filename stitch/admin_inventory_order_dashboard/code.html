@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Inventory &amp; Order Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13ec80",
+              "background-light": "#f6f8f7",
+              "background-dark": "#102219",
+              "surface-light": "#ffffff",
+              "surface-dark": "#182e24",
+              "text-main": "#111814",
+              "text-secondary": "#618975",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased selection:bg-primary/30">
+<div class="relative flex h-screen w-full flex-row overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="flex w-64 flex-col border-r border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark transition-all duration-300">
+<div class="flex flex-col h-full justify-between p-4">
+<div class="flex flex-col gap-6">
+<!-- User Profile / Brand -->
+<div class="flex items-center gap-3 px-2 py-2">
+<div class="relative h-10 w-10 overflow-hidden rounded-full bg-slate-100 ring-2 ring-primary/20">
+<img alt="Admin user avatar" class="h-full w-full object-cover" data-alt="Admin user avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWB2EmFGjY2Z3IdAD0Gf8l11C-eyPgo-QvkZIYD5R6z46ztAPeEt965emB7T4i1LCjeQu-tqveV2ieUHJ62nwJsS2KBoJbBuxfZtlt2hpaXq5rL7HJ0BZxmKHCcLSS6F3E4ahf7Lb4JMGRBoD6eUArNjlmtp4pBHAG6pwJiHtQb43DS1a6QdspjczFlbzB65PjessbK2FxwxyPUwpIzgdXfpKCbVot8pBvQz5OP679lrIJVilN9r6FPg-CIczylvyHc_TKEGlxyJJp"/>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold text-slate-900 dark:text-slate-100">Admin Dashboard</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Recycled Market</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary dark:text-slate-500">inventory_2</span>
+<span class="text-sm font-medium">Products</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary dark:text-slate-500">shopping_cart</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary dark:text-slate-500">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<!-- Active State Example -->
+<a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2.5 text-slate-900 dark:bg-primary/20 dark:text-white" href="#">
+<span class="material-symbols-outlined text-primary">warehouse</span>
+<span class="text-sm font-bold">Inventory</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary dark:text-slate-500">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Actions -->
+<div class="flex flex-col gap-2 border-t border-slate-100 pt-4 dark:border-slate-800">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 hover:text-red-600 dark:text-slate-400 dark:hover:text-red-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400 hover:text-red-600">logout</span>
+<span class="text-sm font-medium">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex flex-1 flex-col overflow-y-auto bg-background-light dark:bg-background-dark p-6 md:p-10">
+<div class="mx-auto flex w-full max-w-6xl flex-col gap-8">
+<!-- Header Section -->
+<header class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Dashboard Overview</h2>
+<p class="mt-1 text-base text-slate-500 dark:text-slate-400">Welcome back, Admin. Here's what's happening today.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-surface-dark dark:text-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export Report
+                    </button>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-slate-900 shadow-sm shadow-primary/20 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+                        New Product
+                    </button>
+</div>
+</header>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+<!-- Card 1 -->
+<div class="flex flex-col gap-2 rounded-xl border border-slate-200 bg-surface-light p-5 shadow-sm dark:border-slate-800 dark:bg-surface-dark">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Sales</span>
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">
+<span class="material-symbols-outlined text-lg">attach_money</span>
+</div>
+</div>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">$124,500</p>
+<div class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-base">trending_up</span>
+<span>+12%</span>
+<span class="ml-1 text-slate-400 font-normal">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-2 rounded-xl border border-slate-200 bg-surface-light p-5 shadow-sm dark:border-slate-800 dark:bg-surface-dark">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">New Leads</span>
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</div>
+</div>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">48</p>
+<div class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-base">trending_up</span>
+<span>+5%</span>
+<span class="ml-1 text-slate-400 font-normal">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-2 rounded-xl border border-slate-200 bg-surface-light p-5 shadow-sm dark:border-slate-800 dark:bg-surface-dark">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Active Listings</span>
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
+<span class="material-symbols-outlined text-lg">list_alt</span>
+</div>
+</div>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">1,203</p>
+<div class="flex items-center gap-1 text-sm font-medium text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-base">trending_up</span>
+<span>+2%</span>
+<span class="ml-1 text-slate-400 font-normal">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col gap-2 rounded-xl border border-slate-200 bg-surface-light p-5 shadow-sm dark:border-slate-800 dark:bg-surface-dark">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Stock Levels</span>
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="material-symbols-outlined text-lg">inventory</span>
+</div>
+</div>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">85%</p>
+<div class="flex items-center gap-1 text-sm font-medium text-red-500 dark:text-red-400">
+<span class="material-symbols-outlined text-base">trending_down</span>
+<span>-1%</span>
+<span class="ml-1 text-slate-400 font-normal">vs last month</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Orders Table Section -->
+<div class="rounded-xl border border-slate-200 bg-surface-light shadow-sm dark:border-slate-800 dark:bg-surface-dark">
+<div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-700">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Recent Orders</h3>
+<div class="flex gap-2">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="h-9 rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-4 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500" placeholder="Search orders..." type="text"/>
+</div>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50 text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
+<tr>
+<th class="whitespace-nowrap px-6 py-3 font-medium">Order ID</th>
+<th class="whitespace-nowrap px-6 py-3 font-medium">Customer</th>
+<th class="whitespace-nowrap px-6 py-3 font-medium">Material</th>
+<th class="whitespace-nowrap px-6 py-3 font-medium">Quantity</th>
+<th class="whitespace-nowrap px-6 py-3 font-medium">Total</th>
+<th class="whitespace-nowrap px-6 py-3 font-medium">Status</th>
+<th class="whitespace-nowrap px-6 py-3 font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<!-- Row 1 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">#ORD-7829</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">E</div>
+                                        EcoPlast Inc.
+                                    </div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">HDPE Pellets</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">500 kg</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">$4,200</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
+                                        Pending
+                                    </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">#ORD-7828</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold">M</div>
+                                        MetalWorks Co.
+                                    </div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">Aluminum Scraps</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">1.2 tons</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">$1,800</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                                        Processing
+                                    </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">#ORD-7827</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">G</div>
+                                        GreenTextiles
+                                    </div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">Cotton Offcuts</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">300 kg</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">$950</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                                        Shipped
+                                    </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">#ORD-7826</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-bold">B</div>
+                                        BioPack Solutions
+                                    </div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">PET Flakes</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">800 kg</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">$3,400</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                                        Processing
+                                    </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">#ORD-7825</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">C</div>
+                                        ConstructRaw
+                                    </div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">Steel Beams</td>
+<td class="whitespace-nowrap px-6 py-4 text-slate-600 dark:text-slate-400">5 tons</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900 dark:text-slate-200">$12,500</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                        Delivered
+                                    </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-slate-100 px-6 py-3 dark:border-slate-700">
+<p class="text-sm text-slate-500 dark:text-slate-400">Showing <span class="font-medium">1</span> to <span class="font-medium">5</span> of <span class="font-medium">20</span> results</p>
+<div class="flex gap-2">
+<button class="rounded border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800">Previous</button>
+<button class="rounded border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

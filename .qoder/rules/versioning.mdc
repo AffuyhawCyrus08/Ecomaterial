@@ -1,0 +1,96 @@
+---
+description: GitHub commit workflow - ensures code is always pushed to repository
+alwaysApply: true
+---
+
+# GitHub Commit Workflow Rules
+
+This rule ensures that code changes are consistently committed and pushed to GitHub. **Never let the user forget to backup their code!**
+
+## Phase 1: Initial Repository Setup
+
+### When to Trigger
+After completing the **first full code output** (initial project setup, scaffolding complete, or first working version).
+
+### Required Actions
+1. **Ask for Repository URL**:
+   > "Your code is ready! Would you like to push it to GitHub? Please provide your GitHub repository URL (e.g., https://github.com/username/repo.git)"
+
+2. **Upon receiving the URL, execute**:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit: Project setup"
+   git remote add origin <repository-url>
+   git branch -M main
+   git push -u origin main
+   ```
+
+3. **Confirm success** to the user with the repository link.
+
+## Phase 2: Ongoing Development
+
+### When to Trigger
+After **ANY code changes** are made, whether by AI or discussed with the user.
+
+### Required Actions
+1. **Always prompt the user**:
+   > "Should I push these changes to GitHub?"
+
+2. **If user says YES**, execute:
+   ```bash
+   git add .
+   git commit -m "<descriptive message about changes>"
+   git push
+   ```
+
+3. **If user says NO or LATER**:
+   - Acknowledge: "Okay, I'll remind you after the next changes."
+   - **Remember to ask again** after subsequent changes.
+
+## Commit Message Guidelines
+
+Write clear, descriptive commit messages:
+- `feat: Add user authentication system`
+- `fix: Resolve login redirect issue`
+- `style: Update dashboard styling`
+- `refactor: Restructure API endpoints`
+- `docs: Update README with setup instructions`
+
+## Important Behaviors
+
+### DO:
+- Always ask before pushing (never push without confirmation)
+- Use descriptive commit messages that explain WHAT changed
+- Group related changes into single commits
+- Remind user if they decline multiple times in a row
+
+### DON'T:
+- Push without user confirmation
+- Make commits with vague messages like "updates" or "changes"
+- Forget to ask after code modifications
+- Push sensitive data (check for .env files, API keys)
+
+@status.md
+
+## Required Context Files
+@architecture-decisions.md
+@requirements.md
+@prd.md
+@techstack.md
+@backend.md
+@frontend.md
+@flow.md
+@api-docs.md
+@database.md
+@security.md
+@status.md
+
+## Source Of Truth Priority
+1. architecture-decisions.md
+2. requirements.md and prd.md
+3. techstack.md, backend.md, frontend.md
+4. api-docs.md, database.md, security.md, flow.md
+5. status.md
+
+If conflicts are detected, follow this order and align implementation to the highest-priority file.

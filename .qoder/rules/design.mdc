@@ -1,0 +1,81 @@
+---
+description: UI/UX design guidelines based on stitch_* design reference directory
+globs: ["**/*.tsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.css", "**/*.scss", "**/*.sass", "**/*.less", "**/components/**", "**/pages/**", "**/views/**", "**/layouts/**", "**/styles/**", "**/ui/**"]
+alwaysApply: false
+---
+
+# UI/UX Design Implementation Rules
+
+This rule applies when working on frontend UI/UX components and pages.
+
+## Stitch Design Directory (CRITICAL)
+
+Look for a directory in the project root that starts with `stitch_` (e.g., `stitch_loan_applications_submission`, `stitch_dashboard_design`, etc.). This directory contains **authoritative UI designs** from the UI designer.
+
+### How to Use the Stitch Directory
+
+1. **Analyze All Subdirectories**: Each subdirectory represents a page or feature. Examine:
+   - All HTML code files (`code.html` or similar)
+   - All image assets (screenshots, icons, etc.)
+   - The visual layout, spacing, colors, typography, and component structure
+
+2. **Treat as Authoritative Reference**: The designs in `stitch_*` are the **non-negotiable visual specification**. Your implementation MUST match these designs visually.
+
+3. **Technology Adaptation**: 
+   - Stitch files are ALWAYS in HTML format
+   - Do NOT copy HTML directly into the project
+   - TRANSLATE the design to the project's actual tech stack (React, Vue, Svelte, Angular, etc.)
+   - Use the HTML as a visual blueprint to recreate the same UI in the correct framework
+   - Maintain the same visual appearance, spacing, colors, and layout
+
+## Layout Consistency Rules (MANDATORY)
+
+Each page/subdirectory in the `stitch_*` folder may have slightly different variations of:
+- Sidebar
+- Header/Navbar
+- Footer
+- Logo placement
+- Menu items
+- Submenu items
+
+### You MUST Unify These Elements:
+
+1. **Merge into ONE consistent layout**: Analyze all pages and create:
+   - ONE unified sidebar design used across ALL pages
+   - ONE unified header/navbar used across ALL pages
+   - ONE unified footer used across ALL pages
+   - Consistent logo and site name placement
+   - Unified navigation menu structure
+
+2. **Intelligent Menu Merging**: Combine menu items from all pages into a comprehensive navigation that makes sense for the application.
+
+3. **Role-Based Exceptions**: Different user roles MAY have different menu items:
+   - Admin pages can show additional admin-specific menu items
+   - User pages can show user-specific menu items
+   - But the overall structure, styling, and layout MUST remain consistent
+
+@frontend.md
+@techstack.md
+@prd.md
+
+## Required Context Files
+@architecture-decisions.md
+@requirements.md
+@prd.md
+@techstack.md
+@backend.md
+@frontend.md
+@flow.md
+@api-docs.md
+@database.md
+@security.md
+@status.md
+
+## Source Of Truth Priority
+1. architecture-decisions.md
+2. requirements.md and prd.md
+3. techstack.md, backend.md, frontend.md
+4. api-docs.md, database.md, security.md, flow.md
+5. status.md
+
+If conflicts are detected, follow this order and align implementation to the highest-priority file.

@@ -1,0 +1,10 @@
+[package]
+name = "your-namespace/ecomaterial-client"
+version = "0.1.0"
+description = "EcoMaterial Market frontend"
+
+[dependencies]
+"sharrattj/static-web-server" = "1"
+
+[fs]
+public = "dist"

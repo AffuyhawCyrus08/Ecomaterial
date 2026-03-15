@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Industrial Materials Marketplace Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "neutral-light": "#f0f4f2",
+                        "neutral-dark": "#1a2c24",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-neutral-light dark:border-b-neutral-dark bg-white dark:bg-background-dark px-4 py-3 md:px-10">
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="flex items-center gap-2 text-slate-900 dark:text-slate-100">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="hidden md:block text-lg font-bold leading-tight tracking-[-0.015em]">EcoMaterial Market</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6 lg:gap-9">
+<a class="text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Shop</a>
+<a class="text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Sell</a>
+<a class="text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Account</a>
+</nav>
+</div>
+<div class="flex flex-1 items-center justify-end gap-4 md:gap-8 ml-4">
+<label class="hidden sm:flex flex-col min-w-40 h-10 w-full max-w-[320px]">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-neutral-light dark:border-neutral-dark focus-within:border-primary transition-colors overflow-hidden">
+<div class="text-slate-500 flex border-none bg-neutral-light dark:bg-neutral-dark items-center justify-center pl-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg rounded-l-none border-none bg-neutral-light dark:bg-neutral-dark text-slate-900 dark:text-white focus:ring-0 h-full placeholder:text-slate-500 px-2 text-sm font-normal leading-normal" placeholder="Search materials..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="hidden lg:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-neutral-light dark:hover:bg-neutral-dark text-slate-900 dark:text-white border border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-sm font-bold leading-normal tracking-[0.015em] transition-all">
+<span class="truncate">Sign In</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 text-slate-900 text-sm font-bold leading-normal tracking-[0.015em] transition-colors shadow-sm">
+<span class="truncate">Register</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 justify-center py-5 px-4 md:px-10">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 gap-12">
+<!-- Hero Section -->
+<section class="@container">
+<div class="relative overflow-hidden rounded-xl bg-slate-900 text-white min-h-[480px] flex flex-col justify-end p-8 md:p-12 lg:p-16">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="Abstract pile of recycled industrial metal scraps" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6JgrORrDxcsqz-cLYHvWcdKuxDPjYUaFfQBIt7jvI56MKuiLRx_iVRI2FzYFraagy48W5ZO92keLlU4EkOf9H8QuIhT-Jo2I4Flx2xsaVYhXGXrC84QYaNWekPASMtoPTTpSUDdwhaxdU8kDodQC4aE9DYrwJdksMkq6SKe4lKxLJpuTfjt00qf2xiTrvfVMjjeJByTBcQP1r2SHqZ7BnAJV3Je6-vARONJLR9kyqwonIt63aDdHSNi9v3qNmciFBX84Y4FHk5Lv5');"></div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+<!-- Content -->
+<div class="relative z-20 max-w-2xl flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider w-fit">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                    Verified Suppliers
+                                </span>
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                                    Sustainable Sourcing for <span class="text-primary">Industrial Materials</span>
+</h1>
+<p class="text-lg text-slate-200 max-w-xl leading-relaxed">
+                                    The global marketplace for refined recycled plastics, sorted metal scraps, and industrial textiles. Connect directly with verified recyclers.
+                                </p>
+</div>
+<div class="flex flex-wrap gap-4 mt-2">
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary hover:bg-primary/90 text-slate-900 text-base font-bold transition-all transform hover:translate-y-[-1px]">
+<span>Browse Materials</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-base font-bold transition-all">
+<span>Start Selling</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 border-y border-neutral-light dark:border-neutral-dark py-8">
+<div class="flex flex-col gap-1 items-center md:items-start px-4">
+<span class="text-3xl font-black text-slate-900 dark:text-white">2.5M+</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Tons Recycled</span>
+</div>
+<div class="flex flex-col gap-1 items-center md:items-start px-4 border-l border-neutral-light dark:border-neutral-dark">
+<span class="text-3xl font-black text-slate-900 dark:text-white">1,200+</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Verified Suppliers</span>
+</div>
+<div class="flex flex-col gap-1 items-center md:items-start px-4 border-l border-neutral-light dark:border-neutral-dark">
+<span class="text-3xl font-black text-slate-900 dark:text-white">98%</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Quality Assured</span>
+</div>
+<div class="flex flex-col gap-1 items-center md:items-start px-4 border-l border-neutral-light dark:border-neutral-dark">
+<span class="text-3xl font-black text-slate-900 dark:text-white">Global</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Shipping Network</span>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="flex flex-col gap-8">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Explore Categories</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Source high-grade materials for your production line</p>
+</div>
+<a class="hidden md:flex items-center gap-1 text-primary font-bold text-sm hover:underline" href="#">
+                            View All Categories
+                            <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Category 1: Refined Plastic -->
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white dark:bg-neutral-dark border border-neutral-light dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+<div class="aspect-[4/3] bg-neutral-light dark:bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Close up of recycled plastic pellets blue and white" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBFLvQ-DGVnr3jVq1Fr1ASi-93GHYzViEdOOOxUK2RiDT0dp5oZ-JnV4nq8JzirTJ7CiwTowVAmrDAQJzEFudoYf7CH-Cz8XPuIoumD1efi0a4aPJb9FAigsYJcDqE07Ge2Cn_VrxSxrHlfQC7B5ppUP3XDW3hmVPNb4NSeNNpQ0u5ShpZH882gNK6-0w6hv8slKU4XKP6LjRoMzae46gV9kDLanvCRwsa7jSGiDVQf140kd9dTlBWRBBN_flxZgpG5VNd2WxSuSzum');"></div>
+<div class="absolute top-4 right-4 bg-white dark:bg-slate-900 rounded-full p-2 shadow-lg z-10">
+<span class="material-symbols-outlined text-primary">recycling</span>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-3 h-full">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Refined Plastic</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">HDPE, PET, and PP pellets ready for injection molding and extrusion processes.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-neutral-light dark:border-slate-800 flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-400 dark:text-slate-500">450+ Listings</span>
+<span class="material-symbols-outlined text-primary transform translate-x-0 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Category 2: Metal Scraps -->
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white dark:bg-neutral-dark border border-neutral-light dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+<div class="aspect-[4/3] bg-neutral-light dark:bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Heap of aluminum and steel metal scraps" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDFZ7Se6TyMMomQ5uf8nHbE7MJVjB3yEKRkvVvpMdNJoWh6zikG6kzOtk2_KBU6iqAXi0FAsI43aFkZ_pP6RVHiGoKlXoL-UW_NZetP-SLBvdFsAnkm-EwsfCmxeFOWDaRZuowU46iSzcNkjoTYzPMnjtmriFsJuam9DI5uhoI4F7LYXwM2RpKuSUm20yq-RLNyAqqIjqCNv30Yg1Zv_dfWiyysvvIBUpck9uJ0GPdz107yOW-czhphflNxykIiNk8nc1hyhDKbT_C_');"></div>
+<div class="absolute top-4 right-4 bg-white dark:bg-slate-900 rounded-full p-2 shadow-lg z-10">
+<span class="material-symbols-outlined text-primary">construction</span>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-3 h-full">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Metal Scraps</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">Sorted aluminum, copper wire, and heavy melting steel ready for smelting.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-neutral-light dark:border-slate-800 flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-400 dark:text-slate-500">890+ Listings</span>
+<span class="material-symbols-outlined text-primary transform translate-x-0 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Category 3: Discarded Fabrics -->
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white dark:bg-neutral-dark border border-neutral-light dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+<div class="aspect-[4/3] bg-neutral-light dark:bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Color sorted industrial textile waste fabrics" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDp4ulka8wmC37Vt21QOuqCcB5AAT7YmEz2VVDEa3kWJCFHOQ-GqOB9E6VfApto8lpDnLUvJlxj5zdi3QD8wig2kxURoYmMJuVwDs88uge-p_kXe6PnWaZY88uYLvV7gZQVO5ggo0t1bZrQlgsVsKZccssw32GHZcmzYtlgX87X6XaRC0k_FGwBUUCszBFJXmzBQHU7pKLUvRAOrI1uOD7L7v_U9Kw4DjU7HeevjPYii9JokkY-StnO5Y0zQtS_A15z8EKIBZshgX5_');"></div>
+<div class="absolute top-4 right-4 bg-white dark:bg-slate-900 rounded-full p-2 shadow-lg z-10">
+<span class="material-symbols-outlined text-primary">checkroom</span>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-3 h-full">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Discarded Fabrics</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">Pre-consumer cotton off-cuts, denim scraps, and synthetic fiber waste.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-neutral-light dark:border-slate-800 flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-400 dark:text-slate-500">320+ Listings</span>
+<span class="material-symbols-outlined text-primary transform translate-x-0 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Listings Table/List -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Recent Listings</h2>
+</div>
+<div class="overflow-x-auto rounded-lg border border-neutral-light dark:border-neutral-dark bg-white dark:bg-neutral-dark shadow-sm">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead class="bg-neutral-light/50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 font-medium">
+<tr>
+<th class="px-6 py-4">Material Name</th>
+<th class="px-6 py-4">Category</th>
+<th class="px-6 py-4">Quantity Available</th>
+<th class="px-6 py-4">Location</th>
+<th class="px-6 py-4">Price / Ton</th>
+<th class="px-6 py-4">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-neutral-light dark:divide-slate-800">
+<tr class="hover:bg-neutral-light/30 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-700 bg-cover bg-center" data-alt="Shredded plastic pieces" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAqbrckQ_hg3khR6JuPYPwVJu3T9E7B2oPiUX8dY78AV-lp4PNpR4092CtJxNAoF5RxuvJVenOWfxZGRJYLfkf4B9dWqAL70kxOe1XO9P-m3D-Or-APlJXJ4A43pzxb7RNVsDH2PtNV-SWy9zI1k0r-30LQkpwwVELBH754OFFoXAhCtNZ0Ftkry78cPvgjY86hiD2QvcL6e0T0GG2rX3XSM6OTCaYpnI8eVxNWGoC7X57-dm_la8-IY9hQQk9cwuEmnthDR_DOzvxw');"></div>
+                                        HDPE Blue Regrind
+                                    </td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">Plastic</td>
+<td class="px-6 py-4 text-slate-900 dark:text-white">25 Tons</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-slate-400">location_on</span>
+                                        Germany
+                                    </td>
+<td class="px-6 py-4 text-slate-900 dark:text-white font-bold">$450.00</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-primary/80 font-bold text-sm">View Details</button>
+</td>
+</tr>
+<tr class="hover:bg-neutral-light/30 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-700 bg-cover bg-center" data-alt="Copper wire scrap bundle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLJ47iabIsqTEyozhcv3TK-7bqoY20opfVroFY6YyBqcOkZLmTeXE8u7RgFzf5UvIJlesDpkbxLEiUSDWAqjvfe-wyq9lCiaCglV5_UduFoaCP28U0WJx15ha1Z7eIh9XuokLL09_J0-pPYoXyXpAxy0FSjwjajjdX47m__dDYEhOXTtyccca4cIB51dofgTIaiAejQLp0fKUSDlvBki7F3ipuEyn8U9_4EXtsofm9IX05vo224gotR6zFRwpj7RG6NomfNLO-duGa');"></div>
+                                        Copper Wire #1
+                                    </td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">Metal</td>
+<td class="px-6 py-4 text-slate-900 dark:text-white">5 Tons</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-slate-400">location_on</span>
+                                        USA
+                                    </td>
+<td class="px-6 py-4 text-slate-900 dark:text-white font-bold">$7,200.00</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-primary/80 font-bold text-sm">View Details</button>
+</td>
+</tr>
+<tr class="hover:bg-neutral-light/30 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-700 bg-cover bg-center" data-alt="Stacked denim textile waste" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAoFcua_eJZ3gYgz4Pc0OqaqeSSMQ8NdeLS_egqFJ7ATFLIk1ixYofjkjH46fYPfSM6uzsBMyOoedg7LhaXUDMtHbkt_1HUV5R_CdLSBDdF1UjxQME3fHEJfT0y_aXUS81hH4EkEih3eZlkj0zn-cgwXqpw71hmgrWTmQtYpmHyiFD7y1q5yFP4muoCjNrBlzK_2YH7hjInwFsvYlJDJb455j_ZgubA33TJe4VaNzD_eCt6iexYlaMD3ss-Z7TndfqeFjVXeN2Y_vY0');"></div>
+                                        Denim Off-cuts
+                                    </td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">Fabric</td>
+<td class="px-6 py-4 text-slate-900 dark:text-white">12 Tons</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-slate-400">location_on</span>
+                                        India
+                                    </td>
+<td class="px-6 py-4 text-slate-900 dark:text-white font-bold">$180.00</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-primary/80 font-bold text-sm">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Call to Action Banner -->
+<section class="rounded-xl bg-slate-900 dark:bg-primary/10 overflow-hidden relative">
+<div class="absolute right-0 top-0 bottom-0 w-1/3 bg-primary/20 skew-x-[-20deg] translate-x-12"></div>
+<div class="p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+<div class="flex flex-col gap-4 max-w-xl">
+<h2 class="text-3xl font-bold text-white dark:text-white">Ready to Monetize Your Waste?</h2>
+<p class="text-slate-300 dark:text-slate-300">Join over 5,000 industrial facilities turning their waste stream into a revenue stream. List your materials in minutes.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-8 bg-primary hover:bg-primary/90 text-slate-900 text-base font-bold transition-colors">
+                                Become a Seller
+                            </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto border-t border-neutral-light dark:border-neutral-dark bg-white dark:bg-background-dark py-12 px-4 md:px-10">
+<div class="flex flex-col md:flex-row justify-between gap-12 max-w-[1200px] mx-auto">
+<div class="flex flex-col gap-4 max-w-xs">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-xl">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+                        EcoMaterial
+                    </div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Connecting industries for a circular economy. Transforming waste into worth since 2023.</p>
+</div>
+<div class="flex gap-16 flex-wrap">
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-slate-900 dark:text-white">Platform</h4>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Browse Materials</a>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Sell Waste</a>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Pricing</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-slate-900 dark:text-white">Company</h4>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">About Us</a>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Careers</a>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Sustainability</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-slate-900 dark:text-white">Support</h4>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Help Center</a>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Terms of Service</a>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+<div class="border-t border-neutral-light dark:border-neutral-dark mt-12 pt-8 text-center text-sm text-slate-400">
+                © 2023 EcoMaterial Market Inc. All rights reserved.
+            </div>
+</footer>
+</div>
+</body></html>

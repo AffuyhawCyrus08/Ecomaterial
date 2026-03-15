@@ -1,0 +1,63 @@
+---
+description: Backend development guidelines and API implementation
+globs: ["**/*.js", "**/*.ts", "**/api/**", "**/server/**", "**/models/**", "**/routes/**", "**/controllers/**"]
+alwaysApply: false
+---
+
+# Backend Development Rules
+
+When implementing backend functionality:
+
+## API Development
+- Follow the API design patterns outlined in backend.md and api-docs.md
+- Use the backend stack defined in techstack.md (Node.js + Express)
+- Implement proper HTTP status codes and error responses
+- Use consistent naming conventions for endpoints
+- Document API endpoints with clear request/response examples as shown in api-docs.md
+
+## Data Management
+- Implement the data models as specified in backend.md and database.md
+- Follow the database schema design in database.md
+- Use proper database indexing and query optimization
+- Implement data validation and sanitization
+- Handle database migrations properly
+
+## Security Implementation
+- Follow the security guidelines outlined in the backend documentation
+- Implement proper authentication and authorization
+- Validate and sanitize all user inputs
+- Use environment variables for sensitive configuration
+
+## Performance & Scalability
+- Implement caching strategies where appropriate
+- Use async/await patterns for non-blocking operations
+- Monitor and log application performance
+- Design for horizontal scaling if specified
+
+@backend.md
+@api-docs.md
+@database.md
+@techstack.md
+@flow.md
+
+## Required Context Files
+@architecture-decisions.md
+@requirements.md
+@prd.md
+@techstack.md
+@backend.md
+@frontend.md
+@flow.md
+@api-docs.md
+@database.md
+@security.md
+@status.md
+
+## Source Of Truth Priority
+1. architecture-decisions.md
+2. requirements.md and prd.md
+3. techstack.md, backend.md, frontend.md
+4. api-docs.md, database.md, security.md, flow.md
+5. status.md
+
+If conflicts are detected, follow this order and align implementation to the highest-priority file.

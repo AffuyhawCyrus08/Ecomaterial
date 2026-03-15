@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Material Checkout Process</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#308ce8",
+                        "primary-dark": "#1d4ed8",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-slate-200 bg-white px-10 py-3 dark:border-slate-800 dark:bg-slate-950">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">RecycleMarket</h2>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Marketplace</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">My Quotes</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Logistics</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex h-9 items-center justify-center rounded-lg px-4 text-sm font-medium text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
+                        Logout
+                    </button>
+<div class="h-10 w-10 rounded-full bg-slate-200 bg-cover bg-center" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDzI_3p4zSQHwPXlzDa-F6_arrM2BQsTtn2mi18qN69zGL1iONz8fDbQSCH_46o-otrvmFm_1xDNkWP1h3j73WAA-TCfFIbk5-gjyl-HRfT3hvI372TMefPls5ksB8wn3POom6Aw43teeVLRF6X_Do5XAkSlVzCxhIYGUl9PSxqG8fb4fSC8TQysUQghUDof0VlKmvHMu7NaQzsUxoHxmDspbrQnc1GyBDL7nZaO_yGntFf6Td0DCzgwvBHjgw7oCTa_frT63fylMW");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 px-4 py-8 md:px-10 lg:px-20 xl:px-40">
+<div class="mx-auto max-w-7xl">
+<!-- Page Title & Progress -->
+<div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h1 class="text-3xl font-black leading-tight tracking-tight text-slate-900 dark:text-white md:text-4xl">Checkout &amp; Quote Request</h1>
+<p class="mt-2 text-slate-500 dark:text-slate-400">Step 2 of 3: Logistics &amp; Shipping Details</p>
+</div>
+<div class="w-full lg:max-w-md">
+<div class="flex justify-between text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
+<span>Step 2: Shipping/Logistics</span>
+<span>66%</span>
+</div>
+<div class="h-2 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-full bg-primary transition-all duration-500" style="width: 66%;"></div>
+</div>
+<div class="mt-2 flex justify-between text-xs text-slate-500 dark:text-slate-400">
+<span>Prev: Review</span>
+<span>Next: Payment/Terms</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+<!-- Left Column: Order Summary -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+<div class="mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">shopping_cart</span>
+<h2 class="text-xl font-bold">Order Summary</h2>
+</div>
+<p class="mb-6 text-slate-600 dark:text-slate-400">Review your selected materials and quantities before finalizing logistics requirements.</p>
+<div class="flex flex-col gap-4">
+<!-- Item 1 -->
+<div class="flex flex-col gap-4 rounded-lg border border-slate-100 bg-slate-50 p-4 transition hover:border-primary/20 hover:bg-white dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/50 sm:flex-row sm:items-start">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-primary shadow-sm dark:bg-slate-800">
+<span class="material-symbols-outlined">recycling</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white">Recycled PET Plastic Pellets</h3>
+<span class="font-bold text-slate-900 dark:text-white">$1,200.00</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Grade: Post-Consumer | Clear</p>
+<div class="mt-2 flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-400">
+<span class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-700">2,500 lbs</span>
+<span>x $0.48/lb</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col gap-4 rounded-lg border border-slate-100 bg-slate-50 p-4 transition hover:border-primary/20 hover:bg-white dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/50 sm:flex-row sm:items-start">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-primary shadow-sm dark:bg-slate-800">
+<span class="material-symbols-outlined">factory</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white">Aluminum Scrap - Grade A</h3>
+<span class="font-bold text-slate-900 dark:text-white">$850.00</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Source: Industrial Offcuts | Clean</p>
+<div class="mt-2 flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-400">
+<span class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-700">500 lbs</span>
+<span>x $1.70/lb</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col gap-4 rounded-lg border border-slate-100 bg-slate-50 p-4 transition hover:border-primary/20 hover:bg-white dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/50 sm:flex-row sm:items-start">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-primary shadow-sm dark:bg-slate-800">
+<span class="material-symbols-outlined">apparel</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white">Cotton Fabric Remnants</h3>
+<span class="font-bold text-slate-900 dark:text-white">$300.00</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Color: Mixed | Baled</p>
+<div class="mt-2 flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-400">
+<span class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-700">1,000 lbs</span>
+<span>x $0.30/lb</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 border-t border-slate-200 pt-6 dark:border-slate-800">
+<div class="flex justify-between text-sm mb-2 text-slate-600 dark:text-slate-400">
+<span>Subtotal Weight</span>
+<span>4,000 lbs</span>
+</div>
+<div class="flex justify-between text-lg font-bold text-slate-900 dark:text-white">
+<span>Estimated Total</span>
+<span>$2,350.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Logistics Form -->
+<div class="lg:col-span-5">
+<div class="sticky top-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+<div class="mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">local_shipping</span>
+<h2 class="text-xl font-bold">Logistics Requirements</h2>
+</div>
+<form class="flex flex-col gap-5">
+<!-- Shipping Preference -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-900 dark:text-white">Shipping Preference</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="shipping_type" type="radio"/>
+<div class="flex flex-col items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 p-3 text-center transition peer-checked:border-primary peer-checked:bg-primary/5 dark:border-slate-700 dark:bg-slate-900 dark:peer-checked:bg-primary/20">
+<span class="material-symbols-outlined text-slate-500 peer-checked:text-primary">warehouse</span>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Customer Pickup</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="shipping_type" type="radio"/>
+<div class="flex flex-col items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 p-3 text-center transition peer-checked:border-primary peer-checked:bg-primary/5 dark:border-slate-700 dark:bg-slate-900 dark:peer-checked:bg-primary/20">
+<span class="material-symbols-outlined text-slate-500 peer-checked:text-primary">local_shipping</span>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Carrier Delivery</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Loading Dock -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-900 dark:text-white">Loading Dock Availability</label>
+<select class="h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+<option>Yes, loading dock available</option>
+<option>No, liftgate required</option>
+<option>Forklift available only</option>
+</select>
+</div>
+<!-- Preferred Date -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-900 dark:text-white">Preferred Pickup/Delivery Date</label>
+<div class="relative">
+<input class="h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white" type="date"/>
+</div>
+</div>
+<!-- Documentation -->
+<div class="flex flex-col gap-3 pt-2">
+<label class="text-sm font-bold text-slate-900 dark:text-white">Required Documentation</label>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-3 rounded-lg border border-slate-100 p-3 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Certificate of Analysis (COA)</span>
+<span class="text-xs text-slate-500">Material composition verification</span>
+</div>
+</label>
+<label class="flex items-center gap-3 rounded-lg border border-slate-100 p-3 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Bill of Lading (BOL)</span>
+<span class="text-xs text-slate-500">Standard shipping document</span>
+</div>
+</label>
+<label class="flex items-center gap-3 rounded-lg border border-slate-100 p-3 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Weight Ticket</span>
+<span class="text-xs text-slate-500">Certified scale ticket</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Additional Instructions -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-900 dark:text-white">Special Instructions</label>
+<textarea class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white" placeholder="Gate codes, contact numbers, or specific handling needs..." rows="3"></textarea>
+</div>
+<!-- Action Buttons -->
+<div class="mt-4 flex flex-col gap-3">
+<button class="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-bold text-white shadow-sm transition-transform hover:scale-[1.01] hover:bg-primary-dark" type="button">
+<span>Continue to Payment</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<button class="flex h-10 w-full items-center justify-center rounded-lg border border-slate-200 bg-white px-6 text-sm font-bold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800" type="button">
+                                        Back to Review
+                                    </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

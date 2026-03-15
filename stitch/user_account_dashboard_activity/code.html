@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RecycleMarket Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1a242d",
+                        "border-dark": "#2a3641",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3641; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4754; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark px-6 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">RecycleMarket</h2>
+</div>
+<div class="hidden lg:flex flex-col min-w-60 h-10 w-80">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-[#202933]">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center pl-4 pr-2">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 h-full" placeholder="Search materials, suppliers..."/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Marketplace</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Suppliers</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Logistics</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center justify-center rounded-lg h-9 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold transition-colors">
+<span>Post Request</span>
+</button>
+<button class="relative flex items-center justify-center rounded-lg size-9 hover:bg-slate-100 dark:hover:bg-[#2a3641] text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white dark:border-surface-dark"></span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-9 hover:bg-slate-100 dark:hover:bg-[#2a3641] text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</button>
+<div class="ml-2 size-9 rounded-full bg-cover bg-center border border-slate-200 dark:border-border-dark cursor-pointer" data-alt="User profile picture of a man smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPxoM3vv3z0CcdiY9-L9rIbjusqqG7B_FbTLzqXf6NEx3PLq42WfqzSnDR1hsPDlEfmIGfsl9Mvz6Uy4jRzO1BL5JmmR-867MlD5vdxQXYMaAvmS4zEfP3oKBe1I8ppMoQRg7fknzAIUdIs8ltLFxPVYBCfaSeEMvRpanOZK096LxR-aguk5LOsGrXrLRop5KL0kHuD4ATUbFohK1XvyEDBvwCP1fuJwP5OEx37nMDLyJVJHBmQIaeid6jaNuPdYnS7DSnaZbxKOdv");'></div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex flex-1 max-w-[1400px] w-full mx-auto">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex w-64 flex-col gap-6 border-r border-slate-200 dark:border-border-dark py-8 pr-6 pl-6 bg-white dark:bg-background-dark sticky top-[65px] h-[calc(100vh-65px)]">
+<div class="flex items-center gap-3 mb-2">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwHq4383adyh998MfGgN62xWMpKdEs2X9OxhBUeYqtEjvX_0Z2vw-AKXCrLBpItcqHpx96mGwDTS4lZhYVHc5dwS46LHZBQf83eMXYZZdlfYAs0dV2NGlxNjQyx_mDU8Cbql_BPbhijNaLhyHtPaZv5P6RRiLyzGfGeHO3sy6EBfiu_LdQ_uqVNR8KNeHL_zseeb5zcES1RmiCIxPwtfrzHnMksZbilymUrXj4INedQMN8q3pmQrc0rBydRsi1XRqskcZSyn8a94-1");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-semibold text-slate-900 dark:text-white">John Doe</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Material Buyer</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span>Quotes</span>
+<span class="ml-auto bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span>Saved Materials</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark hover:text-slate-900 dark:hover:text-white transition-colors mt-4 border-t border-slate-200 dark:border-border-dark pt-4" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto bg-slate-100 dark:bg-surface-dark p-4 rounded-xl">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white font-medium text-sm mb-1">
+<span class="material-symbols-outlined text-green-500">eco</span>
+<span>Plan: Enterprise</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Your subscription renews in 12 days.</p>
+<button class="w-full py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-border-dark rounded bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-[#2a3641]">Manage Plan</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-8 lg:px-8 overflow-y-auto">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Welcome back, John</h1>
+<p class="text-slate-500 dark:text-slate-400">Here's what's happening with your material sourcing today.</p>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-primary">
+<span class="material-symbols-outlined">recycling</span>
+</div>
+<span class="flex items-center text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full">
+                            +12% <span class="material-symbols-outlined text-[14px] ml-0.5">arrow_upward</span>
+</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Total Recycled</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">12,450 kg</h3>
+</div>
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<span class="flex items-center text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-full">
+                            Active
+                        </span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Orders in Transit</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">4</h3>
+</div>
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="flex items-center text-xs font-medium text-red-500 bg-red-500/10 px-2 py-1 rounded-full">
+                            -1 New
+                        </span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Pending Quotes</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">2</h3>
+</div>
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<span class="flex items-center text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full">
+                            +5% <span class="material-symbols-outlined text-[14px] ml-0.5">arrow_upward</span>
+</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Cost Savings</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">$3,240</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Main Activity Feed / Orders -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Order Status -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden">
+<div class="p-5 border-b border-slate-200 dark:border-border-dark flex justify-between items-center">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Active Orders</h2>
+<a class="text-sm font-medium text-primary hover:text-blue-400" href="#">View All</a>
+</div>
+<div class="divide-y divide-slate-200 dark:divide-border-dark">
+<!-- Item 1 -->
+<div class="p-5 hover:bg-slate-50 dark:hover:bg-[#202933] transition-colors group cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-[#2a3641] flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">package_2</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-semibold text-slate-900 dark:text-white">Order #4923</h4>
+<span class="text-xs px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-primary font-medium">In Transit</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">1.2 Tons of HDPE Pellets • From <span class="text-slate-700 dark:text-slate-300">EcoPlast Germany</span></p>
+</div>
+</div>
+<div class="flex items-center gap-6 text-sm">
+<div class="flex flex-col items-end">
+<span class="text-slate-500 dark:text-slate-400 text-xs">Estimated Arrival</span>
+<span class="font-medium text-slate-900 dark:text-white">Oct 24, 2023</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="mt-4 flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-slate-100 dark:bg-[#2a3641] rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%] rounded-full"></div>
+</div>
+<span class="text-xs font-medium text-primary">65%</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-5 hover:bg-slate-50 dark:hover:bg-[#202933] transition-colors group cursor-pointer">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-[#2a3641] flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">inventory</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-semibold text-slate-900 dark:text-white">Order #4920</h4>
+<span class="text-xs px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 font-medium">Customs Clearance</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">500kg of Aluminum Scraps • From <span class="text-slate-700 dark:text-slate-300">MetalRecycle Inc.</span></p>
+</div>
+</div>
+<div class="flex items-center gap-6 text-sm">
+<div class="flex flex-col items-end">
+<span class="text-slate-500 dark:text-slate-400 text-xs">Estimated Arrival</span>
+<span class="font-medium text-slate-900 dark:text-white">Oct 28, 2023</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="mt-4 flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-slate-100 dark:bg-[#2a3641] rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 w-[40%] rounded-full"></div>
+</div>
+<span class="text-xs font-medium text-amber-500">40%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Impact Tracking Section -->
+<div class="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-[#1a242d] dark:to-[#131b22] rounded-xl overflow-hidden relative border border-slate-700 dark:border-border-dark">
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[200px] text-white">globe</span>
+</div>
+<div class="p-6 md:p-8 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-end md:items-center gap-6">
+<div>
+<div class="flex items-center gap-2 text-green-400 font-bold tracking-wider text-xs uppercase mb-2">
+<span class="material-symbols-outlined text-[16px]">eco</span>
+                                        Positive Impact
+                                    </div>
+<h2 class="text-2xl font-bold text-white mb-2">Environmental Contribution</h2>
+<p class="text-slate-400 text-sm max-w-lg">Your recycling efforts have saved the equivalent of <span class="text-white font-medium">450 trees</span> and reduced CO2 emissions significantly.</p>
+</div>
+<div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/10 min-w-[140px] text-center">
+<p class="text-xs text-slate-300 uppercase tracking-wide font-medium">CO2 Saved</p>
+<p class="text-2xl font-bold text-white mt-1">8,420 kg</p>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex flex-col gap-1">
+<span class="text-xs text-slate-400">Plastic Recycled</span>
+<span class="text-lg font-bold text-white">4.2 tons</span>
+<div class="h-1 bg-white/10 rounded-full mt-1"><div class="h-full bg-blue-500 w-[70%] rounded-full"></div></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-xs text-slate-400">Metal Salvaged</span>
+<span class="text-lg font-bold text-white">1.8 tons</span>
+<div class="h-1 bg-white/10 rounded-full mt-1"><div class="h-full bg-orange-500 w-[45%] rounded-full"></div></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-xs text-slate-400">Textile Waste</span>
+<span class="text-lg font-bold text-white">850 kg</span>
+<div class="h-1 bg-white/10 rounded-full mt-1"><div class="h-full bg-pink-500 w-[30%] rounded-full"></div></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-xs text-slate-400">Water Saved</span>
+<span class="text-lg font-bold text-white">12k L</span>
+<div class="h-1 bg-white/10 rounded-full mt-1"><div class="h-full bg-cyan-500 w-[90%] rounded-full"></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Panel: Recent Quotes -->
+<div class="flex flex-col gap-6">
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark h-full">
+<div class="p-5 border-b border-slate-200 dark:border-border-dark flex justify-between items-center">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Recent Quotes</h2>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<!-- Quote 1 -->
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-[#202933] border border-slate-100 dark:border-[#2a3641] relative group">
+<div class="absolute top-4 right-4 text-xs font-semibold text-orange-500 bg-orange-500/10 px-2 py-0.5 rounded">Pending</div>
+<div class="flex items-center gap-3 mb-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Supplier company logo placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9tVBY4h7stlpy5ydsfpGM9v53dwB6bkPqcR8JtgYk1fWzeDLGKPRbOi5rQoJOS4PY4Z4YvNHeMGesj84T2mS5706Tt3pINWpqn-RM8jXJAd63_Ed-ySymtjDNCCgz2H9rypWyjhspdzxu9k9Zb142ykr1Jx7ZZoZGigdaT1DubB4EitLE4k9B1iBCYgAV82Ctg3ERvr6NGataAeDuurrvuk0iZB3Jd3lGx4ShroyWRz8N6V4JDv72_5cIJdU7D1auaihV_ETUlfZq");'></div>
+<div>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-white">Global Metals Ltd.</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">2h ago</p>
+</div>
+</div>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Request for 2 Tons of Copper Wire</p>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-200 dark:border-[#2a3641]">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$4,200</span>
+<button class="text-xs font-semibold text-white bg-slate-900 dark:bg-primary hover:opacity-90 px-3 py-1.5 rounded transition-opacity">Review</button>
+</div>
+</div>
+<!-- Quote 2 -->
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-[#202933] border border-slate-100 dark:border-[#2a3641] relative group">
+<div class="absolute top-4 right-4 text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-0.5 rounded">Accepted</div>
+<div class="flex items-center gap-3 mb-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Supplier company logo placeholder 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqfCeM1X8u4Z4zlDDFh9RNDSG3uHoCrO7PNKUtffAeFVx2ZZSxAjkUAQsiKOKUm7w7YhEhsFITQspaHkloK9cqd4Au6QcQH8k2RuWp5_fXQfvNYOuQZf1FNxeJdOhaZPzFIWFJfo2tYscwGROOYMEF_xHrshiaM6UgAVFRiq_xjNLQTxr1lEosPqyqphOci-ofhuu-nvD_1nYzpSTX8bJ4VEQGsahOHDBxemHeP15UQButrw-ozFbhAehwWIyzd7paqJL1LFAAz8r_");'></div>
+<div>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-white">EcoFibers Inc.</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Yesterday</p>
+</div>
+</div>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Bulk Polyester Fabric Scraps</p>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-200 dark:border-[#2a3641]">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$1,850</span>
+<button class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-3 py-1.5 rounded transition-colors">Details</button>
+</div>
+</div>
+<!-- Quote 3 -->
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-[#202933] border border-slate-100 dark:border-[#2a3641] relative group opacity-75">
+<div class="absolute top-4 right-4 text-xs font-semibold text-red-500 bg-red-500/10 px-2 py-0.5 rounded">Expired</div>
+<div class="flex items-center gap-3 mb-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Supplier company logo placeholder 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCh9nawOMZJfzO5mxPKifYNFM5Nfbpw2qgAdUvw05oru4st3TIMGRfxvOLdzjFbSiAldj58PpyBs2rqWURutdKG1FkuY8qFgTGw0eX_Dui5sySelRydVOs6iRVvn1Bt3wteBl0zCXab2HVpAUgHYkQaAp6b-EZg-x6WtW-jliMCUdzxOvcw1ACx6ti3EjcDaSaEg7g7ZBDzqV4Fv9Mmgfa5WFxxaPgKeC-eDlwa1Xq7ZlqZim4HU84EO4fw5TH8BTnS3LPeV5mzSCA2");'></div>
+<div>
+<h4 class="font-semibold text-sm text-slate-900 dark:text-white">PlasticSource</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">3 days ago</p>
+</div>
+</div>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Mixed Grade A Plastic</p>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-200 dark:border-[#2a3641]">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$980</span>
+<button class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-3 py-1.5 rounded transition-colors">Archive</button>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-slate-200 dark:border-border-dark text-center">
+<a class="text-sm font-medium text-primary hover:text-blue-400" href="#">View All Quotes</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
